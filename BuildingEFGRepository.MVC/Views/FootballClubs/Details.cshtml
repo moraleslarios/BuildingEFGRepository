@@ -1,0 +1,66 @@
+﻿@model BuildingEFGRepository.DataBase.FootballClub
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FootballClub</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stadium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stadium)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

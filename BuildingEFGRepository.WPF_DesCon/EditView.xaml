@@ -1,0 +1,103 @@
+﻿<Window x:Class="BuildingEFGRepository.WPF_DesCon.EditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BuildingEFGRepository.WPF_DesCon"
+        mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Converters="clr-namespace:BuildingEFGRepository.WPF_DesCon.Converters"
+        Title="InsertView" Height="508" Width="700" Background="Transparent" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Converters:ImgConverter x:Key="imgConverter"/>
+    </Window.Resources>
+
+    <Grid Margin="0,0,20,20" Background="White">
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="342"/>
+                <Setter Property="Controls:TextBoxHelper.UseFloatingWatermark" Value="True"/>
+                <Setter Property="BitmapEffect">
+                    <Setter.Value>
+                        <DropShadowBitmapEffect/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.BitmapEffect>
+            <DropShadowBitmapEffect/>
+        </Grid.BitmapEffect>
+        <Border BorderBrush="Gray" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="65"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="403"/>
+                    <ColumnDefinition Width="277"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.ColumnSpan="2">
+                    <Border Margin="15,0,15,0" BorderBrush="Gray" BorderThickness="0.5" VerticalAlignment="Bottom"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="35,6,0,0" TextWrapping="Wrap" Text="EDIT DATA ..." Foreground="Gray" VerticalAlignment="Top" FontSize="55" FontFamily="Segoe UI Semilight">
+                        <TextBlock.BitmapEffect>
+                            <DropShadowBitmapEffect/>
+                        </TextBlock.BitmapEffect>
+                    </TextBlock>
+                </Grid>
+                <StackPanel Margin="23,15,0,0" Grid.Row="1" VerticalAlignment="Center">
+                    <TextBox Text="{Binding Model.CityId}" Controls:TextBoxHelper.ClearTextButton="True"  Controls:TextBoxHelper.Watermark="CityId"/>
+                    <TextBox Text="{Binding Model.Name}" Controls:TextBoxHelper.ClearTextButton="True"  Controls:TextBoxHelper.Watermark="Name"/>
+                    <TextBox Text="{Binding Model.Members, StringFormat=###\,###\,###\,###}" Controls:TextBoxHelper.ClearTextButton="True"  Controls:TextBoxHelper.Watermark="Members"/>
+                    <TextBox Text="{Binding Model.Stadium}" Controls:TextBoxHelper.ClearTextButton="True"  Controls:TextBoxHelper.Watermark="Stadium"/>
+                    <Controls:DateTimePicker SelectedDate="{Binding Model.FundationDate, StringFormat=dd/MM/yyyy}" Height="40" Width="342" HorizontalAlignment="Right" Margin="0,0,38,0" Controls:TextBoxHelper.Watermark="Fundation Date" Controls:TextBoxHelper.UseFloatingWatermark="True">
+                        <Controls:DateTimePicker.BitmapEffect>
+                            <DropShadowBitmapEffect/>
+                        </Controls:DateTimePicker.BitmapEffect>
+                    </Controls:DateTimePicker>
+                    <TextBox Text="{Binding Model.Logo}" Controls:TextBoxHelper.ClearTextButton="True"  Controls:TextBoxHelper.Watermark="Path Logo"/>
+                </StackPanel>
+
+
+
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="0,0,20,0"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="BitmapEffect">
+                                <Setter.Value>
+                                    <DropShadowBitmapEffect/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Acept Changes"  Command="{Binding AceptChangesCommand}"      Grid.Row="0" Background="#FFBDEABD" Margin="40,5,40,20" />
+                    <Button Content="Cancel"  Command="{Binding CancelCommand}"   Grid.Column="1" Background="#FFE89A7D"   Margin="40,5,40,20"  />
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Margin="403,157,49,123" BorderBrush="Gray" BorderThickness="1">
+            <Border.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Border.BitmapEffect>
+            <Image Source="{Binding Model.Logo, Converter={StaticResource imgConverter}}" />
+        </Border>
+
+
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,97 @@
+﻿<Controls:MetroWindow x:Class="BuildingEFGRepository.WPF_DesCon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:BuildingEFGRepository.WPF_DesCon"
+        xmlns:Converters="clr-namespace:BuildingEFGRepository.WPF_DesCon.Converters"
+        mc:Ignorable="d" 
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="Football" Height="895" Width="1112" WindowStartupLocation="CenterScreen">
+    <Controls:MetroWindow.Resources>
+        <Converters:ImgConverter x:Key="imgConverter"/>
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="67"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Data}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" AlternatingRowBackground="Gainsboro" IsReadOnly="True" Margin="20" FontSize="15" FontFamily="Arial" >
+            <DataGrid.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </DataGrid.BitmapEffect>
+            <!--<DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                            
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="City Id" Binding="{Binding CityId}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10,0,10,0"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Members" Binding="{Binding Members, StringFormat=###\,###\,###\,###}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Margin" Value="10,0,10,0"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Stadium" Binding="{Binding Stadium}"/>
+                <DataGridTextColumn Header="Fundation Date" Binding="{Binding FundationDate, StringFormat=dd/MM/yyyy}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Logo">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="75" Height="75" Source="{Binding Logo, Converter={StaticResource imgConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1" Margin="20,0,20,20">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,0,20,0"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="BitmapEffect">
+                        <Setter.Value>
+                            <DropShadowBitmapEffect/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Create New" Grid.Column="0" Background="#FFAADEF0" Command="{Binding CreateNewCommand}" />
+            <Button Content="Edit"       Grid.Column="1" Background="#FFBDEABD" Command="{Binding EditCommand}" />
+            <Button Content="Delete"     Grid.Column="2" Background="#FFE89A7D" Command="{Binding DeleteCommand}"  Margin="0,0,0,0"  />
+        </Grid>
+        
+    </Grid>
+</Controls:MetroWindow>
