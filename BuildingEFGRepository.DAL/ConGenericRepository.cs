@@ -100,13 +100,6 @@ namespace BuildingEFGRepository.DAL
         }
 
 
-
-
-        public void Dispose()
-        {
-            if (_dbContext != null) _dbContext.Dispose();
-        }
-
         public int SaveChanges()
         {
             var result = _dbContext.SaveChanges();
@@ -117,6 +110,29 @@ namespace BuildingEFGRepository.DAL
         public Task<int> SaveChangesAsync()
         {
             return _dbContext.SaveChangesAsync();
+        }
+
+        public bool HasChanges()
+        {
+            var result = _dbContext.ChangeTracker.Entries<TEntity>()
+                            .Any(a => a.State == EntityState.Added
+                                   || a.State == EntityState.Deleted
+                                   || a.State == EntityState.Modified);
+
+            return result;
+        }
+
+        public Task<bool> HasChangesAsync()
+        {
+            return Task.Run(() =>
+            {
+                return HasChanges();
+            });
+        }
+
+        public void Dispose()
+        {
+            if (_dbContext != null) _dbContext.Dispose();
         }
     }
 }

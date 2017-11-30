@@ -242,7 +242,25 @@ namespace BuildingEFGRepository.DAL.Tests
             Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void HasChanges_OK()
+        {
+            ObservableCollection<FootballClub> data = instance.All();
 
+            data.Add(new FootballClub
+            {
+                CityId = 1,
+                Name = "New Team",
+                Members = 0,
+                Stadium = "New Stadium",
+                FundationDate = DateTime.Today
+            });
+
+            bool result = instance.HasChanges();
+
+
+            Assert.IsTrue(result);
+        }
 
 
         [TestCleanup]

@@ -15,5 +15,7 @@ namespace BuildingEFGRepository.DAL
         Task<TEntity> FindAsync(object[] pks);
         int SaveChanges();
         Task<int> SaveChangesAsync();
+        bool HasChanges();
+        Task<bool> HasChangesAsync();
     }
 }
