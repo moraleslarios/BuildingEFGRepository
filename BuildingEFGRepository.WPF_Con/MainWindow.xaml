@@ -11,6 +11,7 @@
         Title="Football" Height="895" Width="1112" WindowStartupLocation="CenterScreen">
     <Controls:MetroWindow.Resources>
         <Converters:ImgConverter x:Key="imgConverter"/>
+        <Converters:StateConverter x:Key="stateConverter"/>
     </Controls:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +19,7 @@
             <RowDefinition Height="67"/>
         </Grid.RowDefinitions>
 
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Data}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" AlternatingRowBackground="Gainsboro" IsReadOnly="True" Margin="20" FontSize="15" FontFamily="Arial" >
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Data}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" AlternatingRowBackground="Gainsboro" IsReadOnly="False" Margin="20" FontSize="15" FontFamily="Arial" >
             <DataGrid.BitmapEffect>
                 <DropShadowBitmapEffect/>
             </DataGrid.BitmapEffect>
@@ -34,6 +35,13 @@
                 </Style>
             </DataGrid.RowStyle>-->
             <DataGrid.Columns>
+                <DataGridTemplateColumn Header="State">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="75" Height="75" Source="{Binding Path=DataContext.ViewBag.Repository, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Converter={StaticResource stateConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="City Id" Binding="{Binding CityId}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -42,7 +50,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Members" Binding="{Binding Members, StringFormat=###\,###\,###\,###}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -51,7 +59,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Stadium" Binding="{Binding Stadium}"/>
+                <DataGridTextColumn Header="Stadium" Binding="{Binding Stadium}" Width="*"/>
                 <DataGridTextColumn Header="Fundation Date" Binding="{Binding FundationDate, StringFormat=dd/MM/yyyy}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -69,7 +77,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="1" Margin="20,0,20,20">
+        <Grid Grid.Row="1" Margin="20,0,00,20">
             <Grid.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="0,0,20,0"/>
@@ -83,14 +91,8 @@
                     </Setter>
                 </Style>
             </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Content="Create New" Grid.Column="0" Background="#FFAADEF0" Command="{Binding CreateNewCommand}" />
-            <Button Content="Edit"       Grid.Column="1" Background="#FFBDEABD" Command="{Binding EditCommand}" />
-            <Button Content="Delete"     Grid.Column="2" Background="#FFE89A7D" Command="{Binding DeleteCommand}"  Margin="0,0,0,0"  />
+
+            <Button Content="Save Data" Grid.Column="0" Background="#FFC9E6F0" Command="{Binding CreateNewCommand}" />
         </Grid>
         
     </Grid>

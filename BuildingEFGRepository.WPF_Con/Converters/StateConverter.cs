@@ -5,22 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Media.Imaging;
+using BuildingEFGRepository.DAL;
+using BuildingEFGRepository.DataBase;
 
 namespace BuildingEFGRepository.WPF_Con.Converters
 {
-    public class ImgConverter : IValueConverter
+    public class StateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string path = value?.ToString() ?? @"https://img.discogs.com/wGp-OpMyUssA2Ak5nIMTgwFCv6E=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/L-841366-1465249405-2735.jpeg.jpg";
+            var repository = value as IConGenericRepository<FootballClub>;
 
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(path, UriKind.Absolute);
-            bitmap.EndInit();
+            var data = repository.Find(1);
 
-            return bitmap;
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

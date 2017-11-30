@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BuildingEFGRepository.WPF_DesCon
+namespace BuildingEFGRepository.WPF_Con
 {
     /// <summary>
     /// Interaction logic for InsertView.xaml

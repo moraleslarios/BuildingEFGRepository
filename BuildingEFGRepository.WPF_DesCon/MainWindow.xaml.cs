@@ -1,6 +1,6 @@
 ﻿using BuildingEFGRepository.DataBase;
-using BuildingEFGRepository.WPF_DesCon.Helper;
-using BuildingEFGRepository.WPF_DesCon.ViewModel;
+using BuildingEFGRepository.WPF_Con.Helper;
+using BuildingEFGRepository.WPF_Con.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls;
 using System;
@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BuildingEFGRepository.WPF_DesCon
+namespace BuildingEFGRepository.WPF_Con
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

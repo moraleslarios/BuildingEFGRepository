@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingEFGRepository.MVC",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingEFGRepository.WPF_DesCon", "BuildingEFGRepository.WPF_DesCon\BuildingEFGRepository.WPF_DesCon.csproj", "{3F8803B2-BEDE-4B7C-9A4C-D9B23EF0E93D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingEFGRepository.WPF_Con", "BuildingEFGRepository.WPF_Con\BuildingEFGRepository.WPF_Con.csproj", "{ADC97841-42D1-4D41-86BA-43DA6BD2CEE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3F8803B2-BEDE-4B7C-9A4C-D9B23EF0E93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F8803B2-BEDE-4B7C-9A4C-D9B23EF0E93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F8803B2-BEDE-4B7C-9A4C-D9B23EF0E93D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC97841-42D1-4D41-86BA-43DA6BD2CEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC97841-42D1-4D41-86BA-43DA6BD2CEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC97841-42D1-4D41-86BA-43DA6BD2CEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC97841-42D1-4D41-86BA-43DA6BD2CEE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

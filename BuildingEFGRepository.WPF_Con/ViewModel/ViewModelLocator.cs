@@ -46,7 +46,7 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
 
             //SimpleIoc.Default.Register<MyDBEntities>(() => new MyDBEntities());
             //SimpleIoc.Default.Register<IDisconGenericRepository<FootballClub>, DisconGenericRepository<FootballClub>>();
-            SimpleIoc.Default.Register<IDisconGenericRepository<FootballClub>>(() => new DisconGenericRepository<FootballClub>(() => new MyDBEntities()));
+            SimpleIoc.Default.Register<ConGenericRepository<FootballClub>>(() => new ConGenericRepository<FootballClub>(new MyDBEntities()));
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
