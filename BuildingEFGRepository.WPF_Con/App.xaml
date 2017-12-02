@@ -12,6 +12,9 @@
 
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:BuildingEFGRepository.WPF_Con.ViewModel" />
 
+            <ImageBrush x:Key="Edited"     ImageSource="Images/edit-row.png"/>
+            <ImageBrush x:Key="Inserted"   ImageSource="Images/insert_row_above1600.png"/>
+
             <ResourceDictionary.MergedDictionaries>
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml">

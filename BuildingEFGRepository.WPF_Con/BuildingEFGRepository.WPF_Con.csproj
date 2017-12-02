@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ImgConverter.cs" />
     <Compile Include="Converters\StateConverter.cs" />
+    <Compile Include="Converters\StateConverter2.cs" />
     <Compile Include="Helper\EditionPopupMessage.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -134,6 +135,11 @@
       <Project>{65e96ca1-f2ef-4130-a320-146461c118a0}</Project>
       <Name>BuildingEFGRepository.DataBase</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\edit-row.png" />
+    <Resource Include="Images\insert_row_above1600.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

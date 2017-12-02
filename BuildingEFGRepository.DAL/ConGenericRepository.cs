@@ -9,7 +9,7 @@ namespace BuildingEFGRepository.DAL
 {
     public class ConGenericRepository<TEntity> : IConGenericRepository<TEntity> where TEntity : class
     {
-        protected internal readonly DbContext _dbContext;
+        public readonly DbContext _dbContext;
 
         protected internal readonly DbSet<TEntity> _dbSet;
 

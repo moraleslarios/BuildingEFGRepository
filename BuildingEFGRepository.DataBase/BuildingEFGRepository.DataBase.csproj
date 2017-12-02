@@ -78,8 +78,8 @@
     <Compile Include="Helper\ObservableDataObject.cs" />
     <Compile Include="MyDBEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\FootballClubRepository.cs" />
-    <Compile Include="Repositories\IFootballClubRepository.cs" />
+    <Compile Include="Repositories\FootballClubConRepository.cs" />
+    <Compile Include="Repositories\IFootballClubConRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyDB.mdf">

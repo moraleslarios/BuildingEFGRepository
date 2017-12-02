@@ -42,7 +42,7 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
 
 
 
-        public MainViewModel(ConGenericRepository<FootballClub> repository)
+        public MainViewModel(IConGenericRepository<FootballClub> repository)
         {
             ////if (IsInDesignMode)
             ////{
