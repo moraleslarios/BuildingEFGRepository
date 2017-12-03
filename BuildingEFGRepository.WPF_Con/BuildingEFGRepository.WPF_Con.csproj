@@ -83,7 +83,7 @@
     <Compile Include="Converters\ImgConverter.cs" />
     <Compile Include="Converters\StateConverter.cs" />
     <Compile Include="Converters\StateConverter2.cs" />
-    <Compile Include="Helper\EditionPopupMessage.cs" />
+    <Compile Include="Helper\PopupMessage.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">

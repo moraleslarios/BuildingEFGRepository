@@ -7,21 +7,10 @@ using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using BuildingEFGRepository.WPF_Con.Helper;
 using System.Dynamic;
+using System.Windows.Data;
 
 namespace BuildingEFGRepository.WPF_Con.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase, IDisposable
     {
         public dynamic ViewBag { get; set; }
@@ -67,18 +56,30 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
         }
 
 
-        //public RelayCommand CreateNewCommand => new RelayCommand(CreateNewExecute);
+        public RelayCommand SaveCommand => new RelayCommand(SaveExecute, SaveCanExecute);
 
-        //private void CreateNewExecute()
-        //{
-        //    Action cancelAction = () => Data.Remove(SelectedItem);
+        private bool SaveCanExecute()
+        {
+            var result = _repository.HasChanges();
 
-        //    var model = new FootballClub();
-        //    SelectedItem = model;
-        //    Data.Add(model);
+            return result;
+        }
 
-        //    Messenger.Default.Send(new EditionPopupMessage<FootballClub>("Insert", model, _repository, cancelMessageCallBack: cancelAction));
-        //}
+        private void SaveExecute()
+        {
+            Action callback = () =>
+            {
+                var changes = _repository.SaveChanges();
+
+                Messenger.Default.Send(new PopupMessage($"It has been realized {changes} change(s) in Database." ));
+
+                CollectionViewSource.GetDefaultView(Data).Refresh();
+            };
+
+            Messenger.Default.Send(new PopupMessage("Has you make the changes in DataBase ?", callback));
+        }
+
+
 
 
 

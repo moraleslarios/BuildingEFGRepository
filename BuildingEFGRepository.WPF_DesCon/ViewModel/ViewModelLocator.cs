@@ -18,7 +18,7 @@ using Microsoft.Practices.ServiceLocation;
 using BuildingEFGRepository.DAL;
 using BuildingEFGRepository.DataBase;
 
-namespace BuildingEFGRepository.WPF_Con.ViewModel
+namespace BuildingEFGRepository.WPF_DesCon.ViewModel
 {
     /// <summary>
     /// This class contains static references to all the view models in the

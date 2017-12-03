@@ -5,9 +5,9 @@ using BuildingEFGRepository.DataBase;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
-using BuildingEFGRepository.WPF_Con.Helper;
+using BuildingEFGRepository.WPF_DesCon.Helper;
 
-namespace BuildingEFGRepository.WPF_Con.ViewModel
+namespace BuildingEFGRepository.WPF_DesCon.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

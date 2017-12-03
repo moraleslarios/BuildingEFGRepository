@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuildingEFGRepository.WPF_Con.ViewModel
+namespace BuildingEFGRepository.WPF_DesCon.ViewModel
 {
     public class EditViewModel : ViewModelBase
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuildingEFGRepository.WPF_Con.Helper
+namespace BuildingEFGRepository.WPF_DesCon.Helper
 {
     public class EditionPopupMessage<T> : NotificationMessage where T : class
     {

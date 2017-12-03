@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BuildingEFGRepository.WPF_Con
+namespace BuildingEFGRepository.WPF_DesCon
 {
     /// <summary>
     /// Interaction logic for EditView.xaml

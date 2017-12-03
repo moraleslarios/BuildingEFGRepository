@@ -142,7 +142,7 @@
                 </Style>
             </Grid.Resources>
 
-            <Button Content="Save Data" Grid.Column="0" Background="#FFC9E6F0" Command="{Binding CreateNewCommand}" />
+            <Button Content="Save Data" Grid.Column="0" Background="#FFC9E6F0" Command="{Binding SaveCommand}" />
         </Grid>
         
     </Grid>

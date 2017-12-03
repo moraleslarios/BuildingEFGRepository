@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace BuildingEFGRepository.WPF_Con.Converters
+namespace BuildingEFGRepository.WPF_DesCon.Converters
 {
     public class StateConverter : IValueConverter
     {
