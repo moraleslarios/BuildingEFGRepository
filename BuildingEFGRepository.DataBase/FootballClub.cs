@@ -5,6 +5,7 @@ namespace BuildingEFGRepository.DataBase
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Runtime.CompilerServices;
     using BuildingEFGRepository.DataBase.Helper;
 
     [Serializable]
@@ -14,14 +15,32 @@ namespace BuildingEFGRepository.DataBase
         public int Id
         {
             get { return _id; }
-            set { _id = value; OnPropertyChanged(); }
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+
+                    OnPropertyChanged();
+                }
+                    
+            }
         }
 
         private int _cityId;
         public int CityId
         {
             get { return _cityId; }
-            set { _cityId = value; OnPropertyChanged(); }
+            set
+            {
+                if (_cityId != value)
+                {
+                    _cityId = value;
+
+                    OnPropertyChanged();
+                }
+
+            }
         }
 
 
@@ -31,7 +50,16 @@ namespace BuildingEFGRepository.DataBase
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged(); }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+
+                    OnPropertyChanged();
+                }
+
+            }
         }
 
         private decimal _members;
@@ -40,7 +68,17 @@ namespace BuildingEFGRepository.DataBase
         public decimal Members
         {
             get { return _members; }
-            set { _members = value; OnPropertyChanged(); }
+            set
+            {
+                if (_members != value)
+                {
+
+                    _members = value;
+
+                    OnPropertyChanged();
+                }
+
+            }
         }
 
         private string _stadium;
@@ -49,7 +87,16 @@ namespace BuildingEFGRepository.DataBase
         public string Stadium
         {
             get { return _stadium; }
-            set { _stadium = value; OnPropertyChanged(); }
+            set
+            {
+                if (_stadium != value)
+                {
+
+                    _stadium = value;
+                    OnPropertyChanged();
+                }
+
+            }
         }
 
         private DateTime? _fundationDate;
@@ -58,7 +105,15 @@ namespace BuildingEFGRepository.DataBase
         public DateTime? FundationDate
         {
             get { return _fundationDate; }
-            set { _fundationDate = value; OnPropertyChanged(); }
+            set
+            {
+                if (_fundationDate != value)
+                {
+                    _fundationDate = value;
+                    OnPropertyChanged();
+                }
+
+            }
         }
 
         private string _logo;
@@ -66,8 +121,35 @@ namespace BuildingEFGRepository.DataBase
         public string Logo
         {
             get { return _logo; }
-            set { _logo = value; OnPropertyChanged(); }
+            set
+            {
+                if (_logo != value)
+                {
+                    _logo = value;
+                    OnPropertyChanged();
+                }
+
+            }
         }
+
+
+        private string _state;
+        [NotMapped]
+        public string State
+        {
+            get { return _state; }
+            set
+            {
+                if (_state != value)
+                {
+                    _state = value;
+
+                    OnPropertyChanged();
+                }
+
+            }
+        }
+
 
 
 

@@ -6,6 +6,6 @@
 
     public interface IFootballClubConRepository : IConGenericRepository<FootballClub>
     {
-        bool IsUpdateState(int id);
+        string GetState(FootballClub entity);
     }
 }

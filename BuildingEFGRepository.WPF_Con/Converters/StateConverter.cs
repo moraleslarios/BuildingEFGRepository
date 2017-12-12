@@ -32,23 +32,15 @@ namespace BuildingEFGRepository.WPF_Con.Converters
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            //return _imgUpdate;
+            if (values[0] == null) return null;
 
-            if (values[0] == null || values[0] == DependencyProperty.UnsetValue) return null;
-            if (values[1] == null || values[1] == DependencyProperty.UnsetValue) return null;
+            var valueStr = values[0].ToString();
 
-            var repository = values[0] as ConGenericRepository<FootballClub>;
-            var id = int.Parse(values[1].ToString());
-
-            string path = null;
-
-            if (id == 0) return _imgInsert;
-
-            //bool isUpdated = repository.IsUpdateState(id);
-
-            bool isUpdated = repository._dbContext.ChangeTracker.Entries<FootballClub>().Any(a => a.Entity.Id == id && a.State == EntityState.Modified);
-
-            if (isUpdated) return _imgUpdate;
+            switch (valueStr)
+            {
+                case "Added"   : return _imgInsert;
+                case "Modified": return _imgUpdate;
+            }
 
             return null;
         }

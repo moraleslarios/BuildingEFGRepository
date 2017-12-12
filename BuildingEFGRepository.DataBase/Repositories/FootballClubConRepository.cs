@@ -14,11 +14,11 @@ namespace BuildingEFGRepository.DataBase.Repositories
 
 
 
-        public bool IsUpdateState(int id)
+        public string GetState(FootballClub entity)
         {
-            bool result = _dbContext.ChangeTracker.Entries<FootballClub>().Any(a => a.Entity.Id == id && a.State == EntityState.Modified);
+            var stateEntity = _dbContext.Entry(entity).State;
 
-            return result;
+            return stateEntity.ToString();
         }
 
 

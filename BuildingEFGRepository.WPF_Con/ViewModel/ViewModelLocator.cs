@@ -17,6 +17,7 @@ using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using BuildingEFGRepository.DAL;
 using BuildingEFGRepository.DataBase;
+using BuildingEFGRepository.DataBase.Repositories;
 
 namespace BuildingEFGRepository.WPF_Con.ViewModel
 {
@@ -44,9 +45,9 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            //SimpleIoc.Default.Register<MyDBEntities>(() => new MyDBEntities());
-            //SimpleIoc.Default.Register<IDisconGenericRepository<FootballClub>, DisconGenericRepository<FootballClub>>();
-            SimpleIoc.Default.Register<IConGenericRepository<FootballClub>>(() => new ConGenericRepository<FootballClub>(new MyDBEntities()));
+
+            //SimpleIoc.Default.Register<IConGenericRepository<FootballClub>>(() => new ConGenericRepository<FootballClub>(new MyDBEntities()));
+            SimpleIoc.Default.Register<IFootballClubConRepository>(() => new FootballClubConRepository(new MyDBEntities()));
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

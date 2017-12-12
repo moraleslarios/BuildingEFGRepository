@@ -8,6 +8,8 @@ using GalaSoft.MvvmLight.Messaging;
 using BuildingEFGRepository.WPF_Con.Helper;
 using System.Dynamic;
 using System.Windows.Data;
+using System.Linq;
+using BuildingEFGRepository.DataBase.Repositories;
 
 namespace BuildingEFGRepository.WPF_Con.ViewModel
 {
@@ -15,7 +17,10 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
     {
         public dynamic ViewBag { get; set; }
 
-        private readonly IConGenericRepository<FootballClub> _repository;
+        private readonly IFootballClubConRepository _repository;
+
+        //private readonly IConGenericRepository<FootballClub> _repository;
+
 
 
         public ObservableCollection<FootballClub> Data { get; set; }
@@ -31,7 +36,8 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
 
 
 
-        public MainViewModel(IConGenericRepository<FootballClub> repository)
+        //public MainViewModel(IConGenericRepository<FootballClub> repository)
+        public MainViewModel(IFootballClubConRepository repository)
         {
             ////if (IsInDesignMode)
             ////{
@@ -46,8 +52,36 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
 
             Data = _repository.All();
 
+            ListenerChangeState(Data, _repository);
+
             ViewBag = new ExpandoObject();
             ViewBag.Repository = _repository;
+        }
+
+        private void ListenerChangeState(ObservableCollection<FootballClub> data, IFootballClubConRepository repository)
+        {
+            data.ToList().ForEach(a => ChangeStateRegister(a, repository));
+
+            data.CollectionChanged += (sender, e) =>
+            {
+                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+                {
+                    var entity = e.NewItems[0] as FootballClub;
+
+                    entity.State = "Added";
+                }
+            };
+        }
+
+        private void ChangeStateRegister(FootballClub entity, IFootballClubConRepository repository)
+        {
+            entity.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName != "State")
+                {
+                    entity.State = repository.GetState(entity);
+                }
+            };
         }
 
         public void Dispose()
@@ -74,14 +108,16 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
                 Messenger.Default.Send(new PopupMessage($"It has been realized {changes} change(s) in Database." ));
 
                 CollectionViewSource.GetDefaultView(Data).Refresh();
+
+                ResetDataStates(Data);
             };
 
             Messenger.Default.Send(new PopupMessage("Has you make the changes in DataBase ?", callback));
         }
 
-
-
-
-
+        private void ResetDataStates(ObservableCollection<FootballClub> data)
+        {
+            data.ToList().ForEach(a => a.State = null);
+        }
     }
 }

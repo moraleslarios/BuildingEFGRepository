@@ -19,6 +19,9 @@ namespace BuildingEFGRepository.DAL
             if (dbContext == null) throw new ArgumentNullException(nameof(dbContext), $"The parameter dbContext can not be null");
 
             _dbContext = dbContext;
+
+            _dbContext.Configuration.ProxyCreationEnabled = false;
+
             _dbSet     = _dbContext.Set<TEntity>();
         }
 

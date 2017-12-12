@@ -31,7 +31,7 @@
                             <Border Width="60" Height="60" >
                                 <Border.Background>
                                     <MultiBinding Converter="{StaticResource stateConverter}">
-                                        <Binding Path="DataContext.ViewBag.Repository" RelativeSource="{RelativeSource AncestorType={x:Type Window}}"/>
+                                        <Binding Path="State"/>
                                         <Binding Path="Id"/>
                                         <Binding Path="CityId"/>
                                         <Binding Path="Name"/>
@@ -42,7 +42,6 @@
                                     </MultiBinding>
                                 </Border.Background>
                             </Border>
-                            <!--<Image Height="30" Width="30" Source="{Binding Id, Converter={StaticResource stateConverter2}}"/>-->
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

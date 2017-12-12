@@ -4,6 +4,7 @@ using BuildingEFGRepository.WPF_Con.Helper;
 using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls;
 using System.Windows;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace BuildingEFGRepository.WPF_Con
 {
@@ -19,20 +20,20 @@ namespace BuildingEFGRepository.WPF_Con
             Messenger.Default.Register<PopupMessage>(this, messengerCallback);
         }
 
-        private void messengerCallback(PopupMessage obj)
+        private async void messengerCallback(PopupMessage obj)
         {
             if(obj.AceptMessageCallBack != null)
             {
-                var result = MessageBox.Show(obj.Notification, "Save Data", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                var result = await this.ShowMessageAsync("Save Data", obj.Notification, MessageDialogStyle.AffirmativeAndNegative);
 
-                if(result == MessageBoxResult.Yes)
+                if(result == MessageDialogResult.Affirmative )
                 {
                     obj.AceptMessageCallBack();
                 }
             }
             else
             {
-                MessageBox.Show(obj.Notification, "Save Data", MessageBoxButton.OK, MessageBoxImage.Information);
+                await this.ShowMessageAsync("Save Data", obj.Notification, MessageDialogStyle.Affirmative);
 
 
             }

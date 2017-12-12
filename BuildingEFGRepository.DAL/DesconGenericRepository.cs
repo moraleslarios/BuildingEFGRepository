@@ -27,7 +27,7 @@ namespace BuildingEFGRepository.DAL
             {
                 var dbSet = context.Set<TEntity>();
 
-                result = dbSet.ToList();
+                result = dbSet.AsNoTracking().ToList();
             }
 
             return result;
@@ -75,7 +75,7 @@ namespace BuildingEFGRepository.DAL
             {
                 var dbSet = context.Set<TEntity>();
 
-                result = dbSet.Where(filter).ToList();
+                result = dbSet.AsNoTracking().Where(filter).ToList();
             }
 
             return result;
