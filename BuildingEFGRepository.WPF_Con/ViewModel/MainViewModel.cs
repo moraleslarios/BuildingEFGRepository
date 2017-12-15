@@ -15,8 +15,6 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
 {
     public class MainViewModel : ViewModelBase, IDisposable
     {
-        public dynamic ViewBag { get; set; }
-
         private readonly IFootballClubConRepository _repository;
 
         //private readonly IConGenericRepository<FootballClub> _repository;
@@ -53,9 +51,6 @@ namespace BuildingEFGRepository.WPF_Con.ViewModel
             Data = _repository.All();
 
             ListenerChangeState(Data, _repository);
-
-            ViewBag = new ExpandoObject();
-            ViewBag.Repository = _repository;
         }
 
         private void ListenerChangeState(ObservableCollection<FootballClub> data, IFootballClubConRepository repository)
